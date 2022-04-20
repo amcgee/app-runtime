@@ -26,4 +26,5 @@ export interface QueryOptions {
     onComplete?: (data: QueryResult) => void
     onError?: (error: FetchError) => void
     lazy?: boolean
+    keepPreviousData?: boolean
 }

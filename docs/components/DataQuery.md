@@ -19,13 +19,14 @@ return (
 
 ## Input Props
 
-|      Name      |           Type            |   Required   | Description                                                                                                                |
-| :------------: | :-----------------------: | :----------: | -------------------------------------------------------------------------------------------------------------------------- |
-|   **query**    | [_Query_](types/Query.md) | **required** | The Query definition describing the requested data                                                                         |
-| **variables**  |         _Object_          |              | Variables to be passed to the dynamic portions of the query                                                                |
-| **onComplete** |        _Function_         |              | Callback function to be called on successfull completion of the query. Called with the response data as the only argument. |
-|  **onError**   |        _Function_         |              | Callback function to be called on failure of the query. Called with the error instance as the only argument.               |
-|    **lazy**    |         _boolean_         |              | If true, wait until `refetch` is called before fetching data.<br/>_**Default**: `false`_                                   |
+|         Name         |           Type            |   Required   | Description                                                                                                                |
+| :------------------: | :-----------------------: | :----------: | -------------------------------------------------------------------------------------------------------------------------- |
+|      **query**       | [_Query_](types/Query.md) | **required** | The Query definition describing the requested data                                                                         |
+|    **variables**     |         _Object_          |              | Variables to be passed to the dynamic portions of the query                                                                |
+|    **onComplete**    |        _Function_         |              | Callback function to be called on successfull completion of the query. Called with the response data as the only argument. |
+|     **onError**      |        _Function_         |              | Callback function to be called on failure of the query. Called with the error instance as the only argument.               |
+|       **lazy**       |         _boolean_         |              | If true, wait until `refetch` is called before fetching data.<br/>_**Default**: `false`_                                   |
+| **keepPreviousData** |         _boolean_         |              | If true, return data from last successful query during refetch.<br/>_**Default**: `false`_                                 |
 
 ## Render Function Props
 

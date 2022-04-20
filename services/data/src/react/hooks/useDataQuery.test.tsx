@@ -165,6 +165,63 @@ describe('useDataQuery', () => {
         })
     })
 
+    describe('parameters: keepPreviousData', () => {
+        it('Should return previous data when true', async () => {
+            const answers = [42, 43]
+            const mockSpy = jest.fn(() => Promise.resolve(answers.shift()))
+            const data = {
+                answer: mockSpy,
+            }
+            const query = {
+                x: { resource: 'answer' },
+            }
+            const wrapper = ({ children }) => (
+                <CustomDataProvider data={data}>{children}</CustomDataProvider>
+            )
+
+            const { result, waitForNextUpdate } = renderHook(
+                () => useDataQuery(query, { keepPreviousData: true }),
+                {
+                    wrapper,
+                }
+            )
+
+            expect(mockSpy).toHaveBeenCalledTimes(1)
+            expect(result.current).toMatchObject({
+                loading: true,
+                called: true,
+            })
+
+            await waitForNextUpdate()
+
+            expect(result.current).toMatchObject({
+                loading: false,
+                called: true,
+                data: { x: 42 },
+            })
+
+            act(() => {
+                // Add a variable to the request to ensure a different cache key
+                result.current.refetch({ one: 1 })
+            })
+
+            expect(mockSpy).toHaveBeenCalledTimes(2)
+            // Previous data should be returned while loading new data
+            expect(result.current).toMatchObject({
+                fetching: true,
+                loading: false,
+                data: { x: 42 },
+            })
+
+            await waitForNextUpdate()
+
+            expect(result.current).toMatchObject({
+                loading: false,
+                data: { x: 43 },
+            })
+        })
+    })
+
     describe('internal: caching', () => {
         it('Should return data from the cache if it is not stale', async () => {
             // Keep cached data forever, see: https://react-query.tanstack.com/reference/useQuery

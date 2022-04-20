@@ -13,6 +13,7 @@ export const DataQuery = ({
     onError,
     variables,
     lazy,
+    keepPreviousData,
     children,
 }: QueryInput) => {
     const queryState = useDataQuery(query, {
@@ -20,6 +21,7 @@ export const DataQuery = ({
         onError,
         variables,
         lazy,
+        keepPreviousData,
     })
 
     return children(queryState)

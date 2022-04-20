@@ -13,14 +13,15 @@ const { loading, error, data, refetch } = useDataQuery(query, options)
 
 ## Input
 
-|          Name          |          Type          |   Required   | Description                                                                                                                |
-| :--------------------: | :--------------------: | :----------: | -------------------------------------------------------------------------------------------------------------------------- |
-|       **query**        | [_Query_](types/Query) | **required** | The Query definition describing the requested data                                                                         |
-|      **options**       |        _Object_        |              | An optional set of query options                                                                                           |
-| **options.variables**  |        _Object_        |              | Variables to be passed to the dynamic portions of the query                                                                |
-| **options.onComplete** |       _Function_       |              | Callback function to be called on successfull completion of the query. Called with the response data as the only argument. |
-|  **options.onError**   |       _Function_       |              | Callback function to be called on failure of the query. Called with the error instance as the only argument.               |
-|    **options.lazy**    |       _boolean_        |              | If true, wait until `refetch` is called before fetching data.<br/>_**Default**: `false`_                                   |
+|             Name             |          Type          |   Required   | Description                                                                                                                |
+| :--------------------------: | :--------------------: | :----------: | -------------------------------------------------------------------------------------------------------------------------- |
+|          **query**           | [_Query_](types/Query) | **required** | The Query definition describing the requested data                                                                         |
+|         **options**          |        _Object_        |              | An optional set of query options                                                                                           |
+|    **options.variables**     |        _Object_        |              | Variables to be passed to the dynamic portions of the query                                                                |
+|    **options.onComplete**    |       _Function_       |              | Callback function to be called on successfull completion of the query. Called with the response data as the only argument. |
+|     **options.onError**      |       _Function_       |              | Callback function to be called on failure of the query. Called with the error instance as the only argument.               |
+|       **options.lazy**       |       _boolean_        |              | If true, wait until `refetch` is called before fetching data.<br/>_**Default**: `false`_                                   |
+| **options.keepPreviousData** |       _boolean_        |              | If true, return data from last successful query during refetch.<br/>_**Default**: `false`_                                 |
 
 ## Output
 

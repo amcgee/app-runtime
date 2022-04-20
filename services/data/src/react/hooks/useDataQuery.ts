@@ -35,6 +35,7 @@ export const useDataQuery = (
         onError: userOnError,
         variables: initialVariables = {},
         lazy: initialLazy = false,
+        keepPreviousData = false,
     }: QueryOptions = {}
 ): QueryRenderInput => {
     const [staticQuery] = useStaticInput<Query>(query, {
@@ -105,6 +106,7 @@ export const useDataQuery = (
         enabled: queryState.current.enabled,
         onSuccess,
         onError,
+        keepPreviousData,
     })
 
     /**
