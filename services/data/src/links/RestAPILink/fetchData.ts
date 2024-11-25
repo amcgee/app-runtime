@@ -1,5 +1,11 @@
 import { FetchError, FetchErrorDetails, JsonValue } from '../../engine'
 
+const validJsonContentTypes: string[] = [
+    'application/json',
+    'application/geo+json',
+    'application/vnd.geo+json',
+]
+
 export const parseContentType = (contentType: string | null) =>
     contentType ? contentType.split(';')[0].trim().toLowerCase() : ''
 
@@ -78,8 +84,7 @@ export function fetchData(
                 response.headers.get('Content-Type')
             )
 
-            // 'application/json'
-            if (contentType === 'application/json') {
+            if (validJsonContentTypes.includes(contentType)) {
                 return await response.json() // Will throw if invalid JSON!
             }
 

@@ -9,6 +9,12 @@ describe('networkFetch', () => {
             expect(parseContentType('application/vnd.api+json')).toBe(
                 'application/vnd.api+json'
             )
+            expect(parseContentType('application/vnd.geo+json')).toBe(
+                'application/vnd.geo+json'
+            )
+            expect(parseContentType('application/geo+json')).toBe(
+                'application/geo+json'
+            )
         })
 
         it('should strip parameters', () => {
@@ -121,6 +127,8 @@ describe('networkFetch', () => {
                 get: (name: string) => headers[name] && headers[name](url),
             },
             json: async () => ({ foo: 'bar' }),
+            'geo+json': async () => ({ foo: 'geobar' }),
+            'vnd.geo+json': async () => ({ foo: 'vndgeobar' }),
             text: async () => 'foobar',
             blob: async () => 'blob of foobar',
         }))
@@ -131,6 +139,20 @@ describe('networkFetch', () => {
         it('Should correctly parse a successful JSON response', () => {
             ;(global as any).fetch = mockFetch
             expect(fetchData('json', {})).resolves.toMatchObject({
+                foo: 'bar',
+            })
+        })
+
+        it('Should correctly parse a successful GEOJSON response', () => {
+            ;(global as any).fetch = mockFetch
+            expect(fetchData('geo+json', {})).resolves.toMatchObject({
+                foo: 'geobar',
+            })
+        })
+
+        it('Should correctly parse a successful VND.GEOJSON response', () => {
+            ;(global as any).fetch = mockFetch
+            expect(fetchData('vnd.geo+json', {})).resolves.toMatchObject({
                 foo: 'bar',
             })
         })
