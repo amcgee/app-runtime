@@ -6,6 +6,6 @@ This library is intended for use with the [DHIS2 Application Platform](https://g
 
 ## Installation
 
-This package is internal to `@dhis2/app-runtime` and generally should not be installed independently.
+This package also comes bundled with `@dhis2/app-runtime` and generally does not have to be installed independently.
 
 See [the docs](https://runtime.dhis2.nu) for more.
