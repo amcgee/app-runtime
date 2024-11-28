@@ -1,8 +1,14 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
+import { DataEngine } from '../../engine'
 import { DataContext } from '../context/DataContext'
 
-export const useDataEngine = () => {
-    const context = useContext(DataContext)
+function useConst<T>(initializer: () => T): T {
+    const [value] = useState(initializer)
+    return value
+}
 
-    return context.engine
+export const useDataEngine = (): DataEngine => {
+    const context = useContext(DataContext)
+    const engine = useConst<DataEngine>(() => context.engine)
+    return engine
 }
