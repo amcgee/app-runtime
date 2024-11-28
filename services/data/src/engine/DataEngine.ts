@@ -16,10 +16,17 @@ const reduceResponses = (responses: JsonValue[], names: string[]) =>
         return out
     }, {})
 
-export class DataEngine {
+type DataEngineEventMap = {
+    sessionStateChanged: boolean
+}
+export class DataEngine extends EventEmitter<DataEngineEventMap>{
     private link: DataEngineLink
+    private sessionIsActive: boolean = true /* Assume we start in an authenticated state, until we receive a response that says otherwise */
+
     public constructor(link: DataEngineLink) {
+        super()
         this.link = link
+        this.link.engine = this
     }
 
     public query(
@@ -82,6 +89,17 @@ export class DataEngine {
                 onError && onError(error)
                 throw error
             })
+    }
+
+    public setSessionIsActive(sessionIsActive: boolean) {
+        const oldSessionIsActive = this.sessionIsActive
+        this.sessionIsActive = sessionIsActive
+        if (sessionIsActive !== oldSessionIsActive) {
+            this.emit('sessionStateChanged', sessionIsActive)
+        }
+    }
+    public getSessionIsActive() {
+        return this.sessionIsActive
     }
 }
 

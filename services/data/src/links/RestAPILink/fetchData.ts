@@ -27,6 +27,7 @@ export const parseStatus = async (response: Response) => {
 
         throw new FetchError({
             type: 'access',
+            status: response.status,
             message,
             details,
         })
@@ -44,6 +45,7 @@ export const parseStatus = async (response: Response) => {
 
         throw new FetchError({
             type: 'unknown',
+            status: response.status,
             message,
             details,
         })

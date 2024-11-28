@@ -1,7 +1,9 @@
 import type { Config } from '@dhis2/app-service-config'
 import {
+    DataEngine,
     DataEngineLink,
     DataEngineLinkExecuteOptions,
+    FetchError,
     FetchType,
     JsonValue,
     ResolvedResourceQuery,
@@ -15,6 +17,7 @@ export class RestAPILink implements DataEngineLink {
     public readonly config: Config
     public readonly versionedApiPath: string
     public readonly unversionedApiPath: string
+    public engine?: DataEngine
 
     public constructor(config: Config) {
         this.config = config
@@ -23,7 +26,18 @@ export class RestAPILink implements DataEngineLink {
     }
 
     private fetch(path: string, options: RequestInit): Promise<JsonValue> {
-        return fetchData(joinPath(this.config.baseUrl, path), options)
+        try {
+            const result = fetchData(joinPath(this.config.baseUrl, path), options)
+            this.engine?.setSessionIsActive(true)
+            return result
+        } catch (err: unknown) {
+            if (err instanceof FetchError) {
+                if (err.type === 'access' && err.status === 401 ) {
+                    this.engine?.setSessionIsActive(false)
+                }
+            }
+            throw err
+        }
     }
 
     public executeResourceQuery(
