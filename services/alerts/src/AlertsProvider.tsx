@@ -5,15 +5,15 @@ import { makeAlertsManager } from './makeAlertsManager'
 import type { Alert, AlertsManager } from './types'
 
 export const AlertsProvider = ({
-    plugin,
-    parentAlertsAdd,
-    showAlertsInPlugin,
     children,
+    plugin = false,
+    parentAlertsAdd = undefined,
+    showAlertsInPlugin = false,
 }: {
-    plugin: boolean
-    parentAlertsAdd: any
-    showAlertsInPlugin: boolean
     children: React.ReactNode
+    plugin?: boolean
+    parentAlertsAdd?: any
+    showAlertsInPlugin?: boolean
 }): ReactElement => {
     const [alerts, setAlerts] = useState<Alert[]>([])
     const [alertsManager] = useState<AlertsManager>(() =>
