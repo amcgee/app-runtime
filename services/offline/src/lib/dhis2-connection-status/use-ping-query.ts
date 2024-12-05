@@ -8,7 +8,10 @@ export function usePingQuery(): () => Promise<any> {
 
     // This endpoint doesn't need any extra headers or handling since it's
     // public. It doesn't extend the user session. See DHIS2-14531
-    const ping = useCallback(() => fetch(baseUrl + '/api/ping'), [baseUrl])
+    const ping = useCallback(
+        () => fetch(new URL('./api/ping', baseUrl).href),
+        [baseUrl]
+    )
 
     return ping
 }
