@@ -123,8 +123,12 @@ However, in certain advanced cases, you may need to initialize a date that behav
 
 An example of this may be if you have a date/time selector and all of the date/times represent server date/times. You may want to limit this date/time selector to not allow selection of future dates/times. If you are in Oslo (Norway) and it is currently _12:00 on 17 May 2023_, and your server is in Abidjan (Côte d'Ivoire) where it is _10:00 17 May 2023_, then you may need a date that behaves as though it were _10:00 17 May 2023_ in Oslo. You can do this as follows:
 
+:::note
+This is an example cannot be copy/pasted unless you have implemented a component named MyCalendarImplementation
+:::
+
 ```jsx
-// NOTE: This is an example cannot be copy/pasted unless you have implemented a component named MyCalendarImplementation
+
 import React from 'react'
 import { useTimeZoneConversion } from '@dhis2/app-runtime'
 import MyCalendarImplementation from './MyCalendarImplementation'
@@ -139,5 +143,6 @@ const FakeTime = () => {
     return <MyCalendarImplementation limitDate={nowServer} />
 }
 ```
-
-Note: in cases like the above, it is often better to rethink the approach and try to rely on client-representations of time. This will ensure that the dates used correspond to an actual true time representation.
+:::note
+In cases like the above, it is often better to rethink the approach and try to rely on client-representations of time. This will ensure that the dates used correspond to an actual true time representation.
+:::

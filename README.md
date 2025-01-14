@@ -3,14 +3,14 @@
 [![npm](https://img.shields.io/npm/v/@dhis2/app-runtime.svg)](https://www.npmjs.com/package/@dhis2/app-runtime)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
-Docs are available at [runtime.dhis2.nu](https://runtime.dhis2.nu).
+Docs are available at [developers.dhis2.org](https://developers.dhis2.org/docs/app-runtime/).
 
 ## Development
 
 ```sh
-> yarn test # runs yarn test on each directory under ./services, and also in ./runtime
-> yarn build # runs yarn build on each directory under ./services, and then in ./runtime
-> yarn start # builds all services, builds the runtime, and starts the query playground server
+yarn test # runs yarn test on each directory under ./services, and also in ./runtime
+yarn build # runs yarn build on each directory under ./services, and then in ./runtime
+yarn start # builds all services, builds the runtime, and starts the query playground server
 ```
 
 ## Examples

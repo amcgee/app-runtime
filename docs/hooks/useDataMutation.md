@@ -60,6 +60,8 @@ export const DeleteButton = ({ indicatorId, onDelete }) => {
 }
 ```
 
-> See [the Indicator component in the example app](https://github.com/dhis2/app-runtime/blob/master/examples/cra/src/components/Indicator.js) for an example of an `update` mutation
+:::info
+See [the Indicator component in the example app](https://github.com/dhis2/app-runtime/blob/master/examples/cra/src/components/Indicator.js) for an example of an `update` mutation
 
-> See [the AddButton component in the example app](https://github.com/dhis2/app-runtime/blob/master/examples/cra/src/components/AddButton.js) for an example of an `create` mutation
+See [the AddButton component in the example app](https://github.com/dhis2/app-runtime/blob/master/examples/cra/src/components/AddButton.js) for an example of an `create` mutation
+:::

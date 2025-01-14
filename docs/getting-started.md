@@ -2,15 +2,19 @@
 
 [![npm](https://img.shields.io/npm/v/@dhis2/app-runtime.svg)](https://www.npmjs.com/package/@dhis2/app-runtime)
 
-The DHIS2 application runtime provides a common, consistent, single-dependency runtime dependency for DHIS2 applications. It is published as `@dhis2/app-runtime` on [NPM](https://www.npmjs.com/package/@dhis2/app-runtime)
+The DHIS2 application runtime provides a common, consistent, single-dependency runtime dependency for DHIS2 applications. It is published as `@dhis2/app-runtime` on [npm](https://www.npmjs.com/package/@dhis2/app-runtime)
 
 ## Installation
 
+To use App Runtime in your project, install it as a dependency using `yarn`:
+
 ```bash
-> yarn add @dhis2/app-runtime
+yarn add @dhis2/app-runtime
 ```
 
-> Please ensure that all webpack bundles reference the same instance of `@dhis2/app-runtime`. We recommmend running `npx yarn-deduplicate --packages @dhis2/app-runtime`. Libraries should include `@dhis2/app-runtime` as a `peerDependency`.
+:::info
+Please ensure that all webpack bundles reference the same instance of `@dhis2/app-runtime`. We recommmend running `npx yarn-deduplicate --packages @dhis2/app-runtime`. Libraries should include `@dhis2/app-runtime` as a `peerDependency`.
+:::
 
 ## Requirements
 

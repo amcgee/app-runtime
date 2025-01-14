@@ -19,4 +19,6 @@ engine.mutate(mutation, {
 })
 ```
 
-> See [Using with Redux](../advanced/redux.md) for an advanced example
+:::info
+See [Using with Redux](../advanced/redux.md) for an advanced example
+:::

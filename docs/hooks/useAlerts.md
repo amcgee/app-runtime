@@ -11,9 +11,9 @@
 | `remove`  | `function` | Call this to remove the `alert`                                                                                                                                                  |
 | `options` | `object`   | A configuration object that matches the props of the alert component, for example [a @dhis2/ui `AlertBar`](https://ui.dhis2.nu/#/api?id=coresrcalertbaralertbarproptypes-object) |
 
-## Usage note
-
+:::info Usage note
 The DHIS2 app-shell wraps the app in an `AlertsProvider` and also includes an `Alerts` component which leverages `useAlerts` to show `AlertBars` in an `AlertStack` (`@dhis2/ui` components). So in a typical DHIS2 app the only hook used from the alerts-service is `useAlert`.
+:::
 
 ## Standalone example
 
